@@ -1,0 +1,147 @@
+<body>
+<div  class="iconetexto">
+  <button mat-icon-button (click)="voltar(false)">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span class="tamanhotexto">voltar</span>
+</div>
+
+<h1 class="titulo">Alimentos Cadastrados</h1>
+<table mat-table>
+    <thead>
+        <th>Nº</th>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Data de Cadastro</th>
+        <th>Data de Validade</th>
+        <th>Editar</th>
+        <th>Remover</th>
+    </thead>
+    <tbody *ngFor="let item of listaAlimentos;let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}Kg</td>
+        <td>${{item.price}} por Kg</td>
+        <td>{{item.dataCadastro}}</td>
+        <td>{{item.dataValidade}}</td>
+        <td>
+            <button mat-icon-button data-bs-toggle="modal" data-bs-target="#editModal" (click)="editarAlimento(i, item)">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </td>
+        <td>
+            <button mat-icon-button (click)="deletarAlimento(i)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </tbody>
+</table>
+
+<div class="botao">
+    <button mat-raised-button color="primary" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Adicionar Alimento</button><br>
+</div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Alimento</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="alimentoForm">
+                <div class="row">
+                    <div class="col-md-6">
+                <label>Nome</label><br>
+                <mat-form-field class="sts">
+                        <input formControlName="name" matInput placeholder="Insira o Nome do Alimento" type="text">
+                        <mat-error>Nome é Obrigatorio</mat-error>
+                </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                <label>Quantidade</label><br>
+                <mat-form-field class="sts">
+                        <input formControlName="quantity" matInput placeholder="Quantidade em quilos" type="number">
+                        <mat-error>Quantidade é Obrigatorio</mat-error>
+                </mat-form-field><br>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <label>Preço</label><br>
+                <mat-form-field class="sts">
+                        <input formControlName="price" matInput placeholder="Preço por quilos" type="number">
+                        <mat-error>Preço é Obrigatorio</mat-error>
+                </mat-form-field><br>
+            </div>
+            <div class="col-md-6">
+                <label>Data de Validade</label><br>
+            <mat-form-field class="sts">
+                <input formControlName="dataValidade" matInput placeholder="" type="date">
+                <mat-error>Data de Validade é Obrigatorio</mat-error>
+        </mat-form-field>
+    </div>
+    </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button mat-raised-button color="gray" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button mat-raised-button color="primary" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cadastrarAlimento()" [disabled]="!alimentoForm.valid">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Alimento</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="alimentoForm">
+                <div class="row">
+                    <div class="col-md-6">
+                <label>Nome</label><br>
+                <mat-form-field class="sts">
+                        <input  formControlName="name" matInput placeholder="Insira o Nome do Alimento" type="text">
+                        <mat-error>Nome é Obrigatorio</mat-error>
+                </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                <label>Quantidade</label><br>
+                <mat-form-field class="sts">
+                        <input  formControlName="quantity" matInput placeholder="Quantidade em quilos" type="number">
+                        <mat-error>Quantidade é Obrigatorio</mat-error>
+                </mat-form-field><br>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <label>Preço</label><br>
+                <mat-form-field class="sts">
+                        <input  formControlName="price" matInput placeholder="Preço por quilos" type="number">
+                        <mat-error>Preço é Obrigatorio</mat-error>
+                </mat-form-field><br>
+            </div>
+            <div class="col-md-6">
+                <label>Data de Validade</label><br>
+            <mat-form-field class="sts">
+                <input  formControlName="dataValidade" matInput placeholder="" type="date">
+                <mat-error>Data de Validade é Obrigatorio</mat-error>
+        </mat-form-field>
+    </div>
+    </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button mat-raised-button color="gray" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="salvarEdicao()" data-bs-dismiss="modal" [disabled]="!alimentoForm.valid">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

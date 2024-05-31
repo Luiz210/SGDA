@@ -1,0 +1,36 @@
+<body>
+    <div  class="iconetexto">
+        <button mat-icon-button (click)="voltar(false)">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="tamanhotexto">voltar</span>
+      </div>
+    
+      <h1>Alimentos Direcionados</h1>
+    <table mat-table>
+        <thead>
+            <th>Nº</th>
+            <th>nome</th>
+            <th>ong</th>
+            <th>Quantidade</th>
+            <th>Data de Entrega</th>
+            <th>Data de Validade</th>
+            <th>Entregue</th>
+        </thead>
+        <tbody>
+          <tbody *ngFor="let item of direcionars;let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{item.alimento.name}}</td>
+            <td>{{item.ong.nome}}</td>
+            <td>{{item.alimento.quantity}}Kg</td>
+            <td>{{item.data_entrega}}</td>
+            <td>{{item.alimento.dataValidade}}</td>
+            <td>
+              <button mat-icon-button (click)="deletarDirecioanr(i)">
+                  <mat-icon>check</mat-icon>
+              </button>
+            </td>
+        </tbody>
+    </table>
+    </body>
+    

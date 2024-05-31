@@ -1,0 +1,33 @@
+<body>
+  <div class="iconetexto">
+    <button mat-icon-button (click)="voltar(false)">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="tamanhotexto">voltar</span>
+  </div>
+  <div class="container">
+    <h1>Doação</h1>
+    <form [formGroup]="doacaoForm">
+      
+        <mat-form-field class="sts">
+          <input formControlName="quantia" matInput placeholder="Valor da Doação" type="number">
+          <mat-error>O Valor é Obrigatorio</mat-error>
+        </mat-form-field><br>
+
+        <mat-form-field class="sts">
+          <mat-label>Forma de Pagamento</mat-label>
+          <select formControlName="formaPagamento" matNativeControl required>
+            <option value="pix">Pix</option>
+            <option value="debito">Débito</option>
+            <option value="credito">Crédito</option>
+            <option value="transferencia bancaria">Transferencia Bancaria</option>
+            <option value="boleto bancario">Boleto Bancario</option>
+          </select><br>
+        </mat-form-field>
+      
+
+    </form>
+    <button mat-raised-button color="primary" class="cbutton" (click)="cadastrarPagamento()" [disabled]="!doacaoForm.valid">Confirmar</button>
+
+  </div>
+</body>

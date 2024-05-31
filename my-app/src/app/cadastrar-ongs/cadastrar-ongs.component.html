@@ -1,0 +1,215 @@
+<body>
+    <div class="iconetexto">
+        <button mat-icon-button (click)="voltar(false)">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="tamanhotexto">voltar</span>
+    </div>
+
+
+    <h1 class="titulo">Ongs Cadastradas</h1>
+    <table mat-table>
+        <thead>
+            <th>Nº</th>
+            <th>Nome</th>
+            <th class="descricao">Descrição</th>
+            <th>Contato</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Editar</th>
+            <th>Remover</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ong of listaOng; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{ong.nome}}</td>
+                <td>{{ong.descricao}}</td>
+                <td>{{ong.telefone}}</td>
+                <td>{{ong.email}}</td>
+                <td>{{ong.endereco}}</td>
+                <td>{{ong.cidade}}</td>
+                <td>{{ong.estado}}</td>
+                <td>
+                    <button mat-icon-button data-bs-toggle="modal" data-bs-target="#editModal"
+                        (click)="editarOng(i, ong)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+                <td>
+                    <button mat-icon-button (click)="deletarOng(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <div class="botao">
+        <button mat-raised-button color="primary" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#cadastroModal">Adicionar Ong</button><br>
+    </div>
+
+    <div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Ong</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="ongFormCadastro">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nome</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="nome" matInput placeholder="Nome da Ong" type="text">
+                                    <mat-error>Nome é Obrigatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Descrição</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="descricao" matInput placeholder="Descrição da Ong"
+                                        type="text">
+                                    <mat-error>Descrição é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="email" matInput placeholder="Email da Ong" type="text">
+                                    <mat-error>Email é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Telefone</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="telefone" matInput placeholder="Telefone da Ong"
+                                        type="number">
+                                    <mat-error>Telefone é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label>Endereço</label><br>
+                                <mat-form-field class="sts1">
+                                    <input formControlName="endereco" matInput placeholder="Endereço da Ong"
+                                        type="text">
+                                    <mat-error>Endereço é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Cidade</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="cidade" matInput placeholder="Cidade da Ong" type="text">
+                                    <mat-error>Cidade é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Estado</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="estado" matInput placeholder="Estado da Ong" type="text">
+                                    <mat-error>Estado é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button mat-raised-button color="gray" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button mat-raised-button color="primary" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cadastrarOng()" [disabled]="!ongFormCadastro.valid">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Ong</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="ongForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nome</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="nome" matInput placeholder="Nome da Ong" type="text">
+                                    <mat-error>Nome é Obrigatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Descrição</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="descricao" matInput placeholder="Descrição da Ong"
+                                        type="text">
+                                    <mat-error>Descrição é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="email" matInput placeholder="Email da Ong" type="text">
+                                    <mat-error>Email é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Telefone</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="telefone" matInput placeholder="Telefone da Ong"
+                                        type="number">
+                                    <mat-error>Telefone é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label>Endereço</label><br>
+                                <mat-form-field class="sts1">
+                                    <input formControlName="endereco" matInput placeholder="Endereço da Ong"
+                                        type="text">
+                                    <mat-error>Endereço é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Cidade</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="cidade" matInput placeholder="Cidade da Ong" type="text">
+                                    <mat-error>Cidade é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Estado</label><br>
+                                <mat-form-field class="sts">
+                                    <input formControlName="estado" matInput placeholder="Estado da Ong" type="text">
+                                    <mat-error>Estado é Obrigatorio</mat-error>
+                                </mat-form-field><br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button mat-raised-button color="gray" type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Fechar</button>
+                    <button mat-raised-button color="primary" type="button" class="btn btn-primary"
+                        data-bs-dismiss="modal" (click)="salvarEdicao()" [disabled]="!ongForm.valid">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

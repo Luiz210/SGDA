@@ -1,0 +1,68 @@
+.cadastroButton{
+    float: right;
+    display: block;
+    height: 36px;
+}
+.imagem{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    align-content: stretch;
+    justify-content: space-around;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px ;
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fefefe;
+}
+#botao{
+    float: right;
+    margin: 10px;
+}
+.sts{
+    width: 460px;
+}
+
+.cbutton{
+    width: 460px;
+}
+.cadastrobutton{
+    margin-top: 20px;
+}
+
+.esquecibutton{
+    margin-bottom: 20px;
+}
+h1{
+    display: flex;
+    justify-content: space-around
+}
+
+.center{
+    display: flex;
+    justify-content: space-around
+}
+
+.login{
+    margin-top: 87px;
+    padding: 20px 40px 160px 20px;
+    border-left: 2px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+    max-width: 500px;
+    width: 100%;
+    background-color: white;
+    float: right; 
+ }
+
+.container {
+    
+}
+

@@ -1,0 +1,129 @@
+<header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      </div>
+    </div>
+  </nav>
+</header>
+<br>
+
+<body>
+  <div class="iconetexto">
+    <button mat-icon-button [routerLink]="['']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="tamanhotexto">voltar</span>
+  </div>
+
+  <h1>CADASTRO</h1>
+  <form [formGroup]="cadastroForm">
+    <div class="checkboxes">
+      <div class="form-check">
+        <input formControlName="role" class="form-check-input" type="radio" name="role" id="flexRadioDefault1"
+          value="2">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Empresa Doadora
+        </label>
+      </div>
+      <div class="form-check">
+        <input formControlName="role" class="form-check-input" type="radio" name="role" id="flexRadioDefault2" checked
+          value="3">
+        <label class="form-check-label" for="flexRadioDefault2">
+          Empresa Vendedora
+        </label>
+      </div>
+    </div>
+    <br>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Dados Pessoais
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <mat-form-field class="sts">
+              <input formControlName="usuario" matInput placeholder="Usuario" type="text">
+              <mat-error *ngIf="cadastroForm.get('nome')?.hasError('required')">Usuario é Obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="sts">
+              <input formControlName="cnpj" matInput placeholder="CNPJ" type="text">
+              <mat-error *ngIf="cadastroForm.get('CNPJ')?.hasError('required')">CNPJ é Obrigatorio</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Contato
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <mat-form-field class="sts">
+              <input formControlName="telefone" matInput placeholder="Telefone" type="number">
+              <mat-error *ngIf="cadastroForm.get('telefone')?.hasError('required')">Telefone é Obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="sts">
+              <input formControlName="email" matInput placeholder="Email" type="email">
+              <mat-error *ngIf="cadastroForm.get('email')?.hasError('required')">Email é Obrigatorio</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Endereço
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <mat-form-field class="sts">
+              <input formControlName="endereco" matInput placeholder="Endereço" type="text">
+              <mat-error *ngIf="cadastroForm.get('endereco')?.hasError('required')">Cpf é Obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="sts">
+              <input formControlName="cidade" matInput placeholder="Cidade" type="adress">
+              <mat-error *ngIf="cadastroForm.get('Cidade')?.hasError('required')">Email é Obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="sts">
+              <input formControlName="estado" matInput placeholder="Estado" type="adress">
+              <mat-error *ngIf="cadastroForm.get('Estado')?.hasError('required')">Estado é Obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="sts">
+              <input formControlName="senha" matInput placeholder="Senha" type="password">
+              <mat-error *ngIf="cadastroForm.get('senha')?.hasError('required')">Senha é Obrigatorio</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br>
+  <button mat-raised-button color="primary" (click)="cadastrar()" [disabled]="!cadastroForm.valid"
+    class="cadastrarbutton">Cadastrar</button>
+
+</body>
+
+
+
+
+<footer class="footer">
+  <p><a>&copy; 2024 Sistema de Controle de desperdicio de Alimentos </a></p>
+</footer>

@@ -1,0 +1,65 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div>
+                
+            </div>
+                <a class="navbar-brand" href="#">SGDA</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav" *ngIf="getloginEmpresa()">
+                    <a class="nav-link" (click)="mostrarTelaCadastroAlimentos(true); mostrarTelaVendas(false);">Cadastro de Alimento</a>
+                    <a class="nav-link" (click)="mostrarTelaCadastroAlimentos(false); mostrarTelaVendas(true);">Alimentos Vendidos</a>
+                    <a class="nav-link">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</a>
+                </div>
+                <div class="navbar-nav" *ngIf="getloginDoador()">
+                    <a class="nav-link" (click)="mostrarTelaDoacao(true); mostrarTelaComprovante(false)">Doação</a>
+                    <a class="nav-link" (click)="mostrarTelaDoacao(false); mostrarTelaComprovante(true)">Comprovante</a>
+                    <a class="nav-link">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</a>
+                </div>
+                <div class="navbar-nav" *ngIf="getloginGestor()">
+                    <a class="nav-link"
+                        (click)="mostrarTelaDirecionar(true); mostrarTelaOngs(false); mostrarCadastrarOngs(false);mostrarListaDirecionar(false)">Direcionar
+                        </a>
+                    <a class="nav-link"
+                        (click)="mostrarCadastrarOngs(true); mostrarTelaDirecionar(false); mostrarTelaOngs(false);mostrarListaDirecionar(false)">
+                        Ongs</a>
+                    <a class="nav-link"
+                        (click)="mostrarListaDirecionar(true);mostrarCadastrarOngs(false); mostrarTelaDirecionar(false); mostrarTelaOngs(false)">Lista
+                        Direcionamentos</a>
+
+                        <a class="nav-link">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</a>
+                </div>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="margin-left: 62%;">
+                    <mat-icon>person</mat-icon>
+                  </button>
+                  <div class="custom-nav-item">
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item [routerLink]="['']" (click)="desativarTelas(false)">
+                          <mat-icon>logout</mat-icon>
+                          <span>logout</span>
+                        </button>
+                      </mat-menu>
+                  </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <app-cadastro-alimento *ngIf="getCadastroAlimento()"></app-cadastro-alimento>
+    <app-tela-vendidos *ngIf="getTelaVendas()"></app-tela-vendidos>
+
+    <app-tela-doacao *ngIf="getTelaDoacao()"></app-tela-doacao>
+    <app-tela-comprovante *ngIf="getTelaComprovante()"></app-tela-comprovante>
+
+    <app-direcionar-alimentos *ngIf="getTelaDirecionar()"></app-direcionar-alimentos>
+    <app-cadastrar-ongs *ngIf="getCadastroOngs()"></app-cadastrar-ongs>
+    <app-lista-direcionar *ngIf="getListaDirecionar()"></app-lista-direcionar>
+
+    <app-notification></app-notification>
+
+</body>
+
+<footer class="footer">
+    <p><a>&copy; 2024 Sistema de Controle de desperdicio de Alimentos </a></p>
+</footer>

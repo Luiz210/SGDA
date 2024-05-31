@@ -1,0 +1,59 @@
+.cadastroButton{
+    float: right;
+    display: block;
+    height: 36px;
+}
+.logo{
+    height: 36px;
+}
+.container {
+  width: 90%;
+  padding: 20px 40px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  height: 610px;
+}
+
+.Tabela{
+  float: right;
+  display: block;
+  height: 36px;
+}
+
+.sts{
+  margin: 5px;
+}
+h1{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.checkboxes{
+  display: flex;
+}
+
+.form-check{
+  margin-left: 10px;
+}
+
+.iconetexto{
+  display: flex;
+  align-items: center;
+}
+.tamanhotexto{
+  font-size: 20px;
+}
+.footer {
+  height: 80px;
+  line-height: 80px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  }

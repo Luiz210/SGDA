@@ -1,0 +1,30 @@
+<body>
+    <div  class="iconetexto">
+        <button mat-icon-button (click)="voltar(false)">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="tamanhotexto">voltar</span>
+      </div>
+
+<h1 class="titulo">Doações Feitas</h1>
+<table mat-table>
+    <thead>
+        <th>Nº</th>
+        <th>Data da Doação</th>
+        <th>Quantia</th>
+        <th>Metodo de Pagamento</th>
+        <th>Download</th>
+    </thead>
+    <tbody  *ngFor="let item of pagamentos;let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.quantia}}</td>
+        <td>{{item.formaPagamento}}</td>
+        <td>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <mat-icon>download</mat-icon>
+            </button>
+        </td>
+    </tbody>
+</table>
+</body>

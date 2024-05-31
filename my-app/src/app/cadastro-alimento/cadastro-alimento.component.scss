@@ -1,0 +1,67 @@
+h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    align-content: stretch;
+    justify-content: space-around;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  thead {
+    background-color: #f0f0f0;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  
+  tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  .Cadastro{
+    float: right;
+    display: block;
+    height: 36px;
+  }
+  .botao{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .footer {
+    height: 80px;
+    line-height: 80px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    }
+
+.custom-modal{
+    max-width: 800px;
+}
+.sts{
+    width: 380px;
+}
+.iconetexto{
+  display: flex;
+  align-items: center;
+}
+.tamanhotexto{
+  font-size: 20px;
+}

@@ -1,0 +1,29 @@
+<body>
+<div  class="iconetexto">
+    <button mat-icon-button (click)="voltar(false)">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="tamanhotexto">voltar</span>
+  </div>
+
+  <h1>Alimentos Vendidos</h1>
+<table mat-table>
+    <thead>
+        <th>Nº</th>
+        <th>nome</th>
+        <th>Quantidade</th>
+        <th>preço</th>
+        <th>Data de Cadastro</th>
+        <th>Data de Validade</th>
+    </thead>
+    <tbody>
+      <tbody *ngFor="let item of listaAlimentos;let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}Kg</td>
+        <td>${{item.price}} por Kg</td>
+        <td>{{item.dataCadastro}}</td>
+        <td>{{item.dataValidade}}</td>
+    </tbody>
+</table>
+</body>
