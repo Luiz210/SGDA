@@ -1,9 +1,12 @@
-é necessario instalar o Angular para poder inicializar o Projeto 
-Link para instalar o Angular: https://angular.dev/tools/cli/setup-local
+Para iniciar o projeto, você precisará seguir alguns passos:
 
-e tambem ter uma IDE para iniciar a API
-Link IntelliJ: https://www.jetbrains.com/idea/
-Link STS: https://spring.io/tools
+1. **Instalar o Angular:**  
+   Você pode seguir as instruções neste [link para instalar o Angular](https://angular.dev/tools/cli/setup-local).
 
-o banco de dados pode ser configurado no application properties, mas está configurado para o Oracle
-Link Oracle: https://www.oracle.com/database/
+2. **Configurar uma IDE:**  
+   Recomendamos usar uma das seguintes IDEs para iniciar a API:
+   - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+   - [Spring Tools Suite (STS)](https://spring.io/tools)
+
+3. **Configurar o banco de dados:**  
+   O banco de dados pode ser configurado no arquivo `application.properties`. Se estiver usando o Oracle, você pode obter mais informações sobre como configurá-lo no [site da Oracle](https://www.oracle.com/database/).
