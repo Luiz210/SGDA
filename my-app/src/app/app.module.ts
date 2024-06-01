@@ -25,6 +25,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ListaDirecionarComponent } from './lista-direcionar/lista-direcionar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotificationComponent } from './notification/notification.component';
+import { TelaInicialVendedorComponent } from './tela-inicial-vendedor/tela-inicial-vendedor.component';
+import { TelaLogadoInicialComponent } from './tela-inicial-admin/tela-logado-inicial.component';
+import { TelaInicialDoadorComponent } from './tela-inicial-doador/tela-inicial-doador.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { NotificationComponent } from './notification/notification.component';
     DirecionarAlimentosComponent,
     CadastrarOngsComponent,
     ListaDirecionarComponent,
-    NotificationComponent
+    NotificationComponent,
+    TelaInicialVendedorComponent,
+    TelaLogadoInicialComponent,
+    TelaInicialDoadorComponent
   
   ],
   imports: [
