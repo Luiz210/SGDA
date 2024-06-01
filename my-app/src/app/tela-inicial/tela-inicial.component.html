@@ -15,7 +15,6 @@
 </header>
 
 <body>
-       
                 <div class="login">
                         <form [formGroup]="loginForm">
                                 <h1>LOGIN</h1>
@@ -37,10 +36,10 @@
                                                 data-bs-target="#exampleModal">Clique aqui</a></p>
                         </div>
                         <button mat-raised-button color="primary" class="cbutton" (click)="logar()" [disabled]="!loginForm.valid">Logar</button>
-                        <div class="center">
-                                <p class="cadastrobutton">Não possui Login ? <a data-bs-toggle="modal"
-                                                data-bs-target="#cadastroModal">Clique aqui</a></p>
+                        <div class="registerButton">
+                                <button mat-raised-button class="cbutton mat-primary" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastrar-Se</button>
                         </div>
+
                 </div>
         
 
@@ -167,7 +166,8 @@
                 </div>
             </div>
             <app-notification></app-notification>
+
+        <footer class="footer">
+                <p><a>&copy; 2024 Sistema de Controle de desperdicio de Alimentos </a></p>
+        </footer>
 </body>
-<footer class="footer">
-        <p><a>&copy; 2024 Sistema de Controle de desperdicio de Alimentos </a></p>
-</footer>

@@ -58,6 +58,9 @@
 
     <app-notification></app-notification>
 
+    <app-tela-inicial-vendedor *ngIf="getloginEmpresa()"></app-tela-inicial-vendedor>
+    <app-tela-logado-inicial *ngIf="getloginGestor()"></app-tela-logado-inicial>
+    <app-tela-inicial-doador *ngIf="getloginDoador()"></app-tela-inicial-doador>
 </body>
 
 <footer class="footer">
