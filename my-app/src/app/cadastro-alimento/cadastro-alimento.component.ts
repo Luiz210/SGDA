@@ -46,7 +46,7 @@ export class CadastroAlimentoComponent {
         dataValidadeControl.setValue(null);
     }
     this.getListaAlimento();
-    this.cd.detectChanges(); // Força a detecção de mudanças
+    this.cd.detectChanges();
   }
 
   salvarEdicao() {
