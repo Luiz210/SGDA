@@ -30,4 +30,8 @@ export class TelaComprovanteComponent {
   voltar(value: boolean) {
     this.viewTelasService.settelacomprovante(value);
   }
+
+  mostrarTelaInicialDoador(value: boolean){
+    this.viewTelasService.settelaInicialDoador(value);
+  }
 }

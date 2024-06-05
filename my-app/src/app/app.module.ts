@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TelaCadastroComponent } from './tela-cadastro/tela-cadastro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 import { ListaDirecionarComponent } from './lista-direcionar/lista-direcionar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotificationComponent } from './notification/notification.component';
@@ -46,7 +46,6 @@ import { TelaInicialDoadorComponent } from './tela-inicial-doador/tela-inicial-d
     TelaInicialVendedorComponent,
     TelaLogadoInicialComponent,
     TelaInicialDoadorComponent
-  
   ],
   imports: [
     BrowserModule,
@@ -62,6 +61,7 @@ import { TelaInicialDoadorComponent } from './tela-inicial-doador/tela-inicial-d
     HttpClientModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatNativeDateModule,
     MatDialogModule
   ],
   providers: [],

@@ -112,4 +112,28 @@ export class TelaLogadoComponent {
   getloginGestor(): boolean {
     return this.viewTelasService.getLoginGestor();
   }
+
+  getTelaInicialVendedor(){
+    return this.viewTelasService.getTelainicialVendedor();
+  }
+
+  mostrarTelaInicialVendedor(value: boolean){
+    this.viewTelasService.setTelaInicialVendendor(value);
+  }
+
+  getTelaInicialDoador(){
+    return this.viewTelasService.gettelaInicialDoador();
+  }
+
+  mostrarTelaInicialDoador(value: boolean){
+    this.viewTelasService.settelaInicialDoador(value);
+  }
+
+  gettelaInicialAdmin(): boolean{
+    return this.viewTelasService.gettelaInicialAdmin();
+  }
+
+  mostrartelaInicialAdmin(value: boolean){
+    this.viewTelasService.settelaInicialAdmin(value);
+  }
 }

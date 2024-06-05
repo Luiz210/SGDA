@@ -1,6 +1,6 @@
 <body>
 <div  class="iconetexto">
-    <button mat-icon-button (click)="voltar(false)">
+    <button mat-icon-button (click)="voltar(false);mostrarTelaInicialVendedor(true)">
       <mat-icon>arrow_back</mat-icon>
     </button>
     <span class="tamanhotexto">voltar</span>
@@ -22,8 +22,8 @@
         <td>{{item.name}}</td>
         <td>{{item.quantity}}Kg</td>
         <td>${{item.price}} por Kg</td>
-        <td>{{item.dataCadastro}}</td>
-        <td>{{item.dataValidade}}</td>
+        <td>{{item.dataCadastro | date:'dd/MM/yyyy'}}</td>
+        <td>{{item.dataValidade | date:'dd/MM/yyyy'}}</td>
     </tbody>
 </table>
 </body>

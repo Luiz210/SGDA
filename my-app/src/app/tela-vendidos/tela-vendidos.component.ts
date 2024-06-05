@@ -24,6 +24,10 @@ export class TelaVendidosComponent {
     this.alimentoService.getAlimentoVendido(this.usuario.id).subscribe(resut => { this.listaAlimentos = resut });
   }
 
+  mostrarTelaInicialVendedor(value: boolean){
+    this.viewTelasService.setTelaInicialVendendor(value);
+  }
+
   ngOnInit() {
     this.getListaAlimento();
   }

@@ -38,7 +38,8 @@ public class DirecionarController {
 			Alimento alimento = direcionar.getAlimento();
 			Alimento aalimento = getAlimentoService().getById(direcionar.getAlimento().getId());
 			getAlimentoService().updateStatus(alimento.getId(), false);
-			getUsuarioService().decrementarSaldo(id, aalimento.getPrice());
+			Float valor = aalimento.getPrice() * aalimento.getQuantity();
+			getUsuarioService().decrementarSaldo(id, valor);
 			return new ResponseEntity<>("O Alimento Foi direcionado Com sucesso, Entregue no dia " + direcionar.getData_entrega(),HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>("Não foi Possivel Direcionar" ,HttpStatus.INTERNAL_SERVER_ERROR);

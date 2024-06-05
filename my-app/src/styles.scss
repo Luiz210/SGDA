@@ -2,5 +2,19 @@
 
 @import "~bootstrap/dist/css/bootstrap.css";
 
- html, body { height: 100%; overflow:hidden;}
+ html, body { height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-datepicker-content,
+.mat-datepicker-toggle-default-icon {
+  z-index: 1051 !important;
+}
+
+.cdk-overlay-container {
+  z-index: 1060 !important;
+}
+
+.custom-datepicker {
+    z-index: 2000 !important; 
+}
+

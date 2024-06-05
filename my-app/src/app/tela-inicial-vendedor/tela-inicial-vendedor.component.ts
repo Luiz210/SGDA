@@ -19,4 +19,8 @@ export class TelaInicialVendedorComponent {
   mostrarTelaVendas(value: boolean) {
     this.viewTelasService.settelavendas(value);
   }
+
+  mostrarTelaInicialVendedor(value: boolean) {
+    this.viewTelasService.setTelaInicialVendendor(value);
+  }
 }

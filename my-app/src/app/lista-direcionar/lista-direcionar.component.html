@@ -1,6 +1,6 @@
 <body>
     <div  class="iconetexto">
-        <button mat-icon-button (click)="voltar(false)">
+        <button mat-icon-button (click)="voltar(false); mostrarTelaInicialAdmin(true)">
           <mat-icon>arrow_back</mat-icon>
         </button>
         <span class="tamanhotexto">voltar</span>
@@ -23,8 +23,8 @@
             <td>{{item.alimento.name}}</td>
             <td>{{item.ong.nome}}</td>
             <td>{{item.alimento.quantity}}Kg</td>
-            <td>{{item.data_entrega}}</td>
-            <td>{{item.alimento.dataValidade}}</td>
+            <td>{{item.data_entrega | date:'dd/MM/yyyy'}}</td>
+            <td>{{item.alimento.dataValidade | date:'dd/MM/yyyy'}}</td>
             <td>
               <button mat-icon-button (click)="deletarDirecioanr(i)">
                   <mat-icon>check</mat-icon>

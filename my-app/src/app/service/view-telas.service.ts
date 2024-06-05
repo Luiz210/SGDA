@@ -16,8 +16,35 @@ export class ViewTelasService {
   private cadastrarOngs: boolean = false;
   private telaOngs: boolean = false;
   private listaDirecionar: boolean = false;
+  private telaInicialVendendor: boolean = false;
+  private telaInicialDoador: boolean = false;
+  private telaInicialAdmin: boolean = false;
 
-  getListaDirecionar(){
+  gettelaInicialAdmin(): boolean {
+    return this.telaInicialAdmin;
+  }
+  
+  settelaInicialAdmin(value: boolean) {
+    this.telaInicialAdmin = value;
+  }
+
+  gettelaInicialDoador(){
+    return this.telaInicialDoador;
+  }
+
+  settelaInicialDoador(value: boolean){
+    this.telaInicialDoador = value;
+  }
+
+  getTelainicialVendedor(): boolean{
+    return this.telaInicialVendendor;
+  }
+
+  setTelaInicialVendendor(value: boolean){
+    this.telaInicialVendendor = value;
+  }
+
+  getListaDirecionar(): boolean{
     return this.listaDirecionar;
   }
 

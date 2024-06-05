@@ -5,7 +5,6 @@ import { PagamentoService } from '../service/pagamento.service';
 import { ViewTelasService } from '../service/view-telas.service';
 import { Usuario } from '../classes/Usuario';
 import { LoginService } from '../service/login.service';
-import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../service/notification.service';
 
 @Component({
@@ -28,6 +27,9 @@ export class TelaDoacaoComponent {
     private notificationService: NotificationService) {}
 
 
+  mostrarTelaInicialDoador(value: boolean){
+    this.viewTelasService.settelaInicialDoador(value);
+  }
 
   voltar(value: boolean) {
     this.viewTelasService.setteladoacao(value);
