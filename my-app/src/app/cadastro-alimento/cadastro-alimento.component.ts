@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlimentoServiceService } from '../service/alimento-service.service';
 import { Alimento } from '../classes/alimento';
@@ -16,30 +16,42 @@ export class CadastroAlimentoComponent {
   private usuario: Usuario = new Usuario();
   private selectedAlimentoIndex: number;
   alimentoForm: FormGroup;
+  formEdicao: FormGroup;
   listaAlimentos: Alimento[];
   hoje = new Date();
   data = this.hoje.toISOString().substring(0, 10);
 
-
-  constructor(private meuServico: AlimentoServiceService,
+  constructor(
+    private meuServico: AlimentoServiceService,
     private fb: FormBuilder,
     private viewTelasService: ViewTelasService,
     private loginService: LoginService,
-    private notificationService: NotificationService) {}
+    private notificationService: NotificationService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   voltar(value: boolean) {
     this.viewTelasService.setcadastroalimento(value);
   }
 
+  mostrarTelaInicialVendedor(value: boolean){
+    this.viewTelasService.setTelaInicialVendendor(value);
+  }
+
   editarAlimento(index: number, item: Alimento) {
     this.selectedAlimentoIndex = index;
-    this.alimentoForm.patchValue(item);
+    this.formEdicao.patchValue(item);
+    const dataValidadeControl = this.formEdicao.get('dataValidade');
+    if (dataValidadeControl) {
+        dataValidadeControl.setValue(null);
+    }
     this.getListaAlimento();
+    this.cd.detectChanges();
   }
 
   salvarEdicao() {
     const idAlimento = this.listaAlimentos[this.selectedAlimentoIndex].id;
-    this.meuServico.editarAlimento(idAlimento, this.alimentoForm.value).subscribe({
+    this.meuServico.editarAlimento(idAlimento, this.formEdicao.value).subscribe({
       next: (response) => {
         this.notificationService.showMessage(response);
         this.getListaAlimento();
@@ -50,7 +62,8 @@ export class CadastroAlimentoComponent {
       error: (e) => {
         this.notificationService.showMessage(e.error);
         console.log(e);
-      }});
+      }
+    });
     this.getListaAlimento();
   }
 
@@ -67,7 +80,8 @@ export class CadastroAlimentoComponent {
       },
       complete: () => {
         this.getListaAlimento();
-      }});
+      }
+    });
   }
 
   cadastrarAlimento() {
@@ -79,29 +93,28 @@ export class CadastroAlimentoComponent {
       next: (response) => {
         this.notificationService.showMessage(response);
         this.getListaAlimento();
+        this.alimentoForm.reset();
       },
       complete: () => {
         this.getListaAlimento();
       },
       error: (e) => {
         this.notificationService.showMessage(e.error);
-        console.log(e);
-      }});
-
-
-
-    this.alimentoForm.reset();
+      }
+    });
   }
 
   ngOnInit() {
     this.cadastroAlimento();
     this.getListaAlimento();
+    this.edicaoAlimento();
   }
-
 
   getListaAlimento() {
     this.usuario = this.loginService.getIdUsuario();
-    this.meuServico.getAlimentoAvenda(this.usuario.id).subscribe(resut => { this.listaAlimentos = resut });
+    this.meuServico.getAlimentoAvenda(this.usuario.id).subscribe(resut => {
+      this.listaAlimentos = resut;
+    });
   }
 
   cadastroAlimento() {
@@ -109,9 +122,18 @@ export class CadastroAlimentoComponent {
       name: ['', Validators.required],
       quantity: ['', Validators.required],
       price: ['', Validators.required],
-      dataCadastro: [this.data, Validators.required],
+      dataCadastro: [this.data],
       dataValidade: ['', Validators.required],
     });
   }
 
+  edicaoAlimento() {
+    this.formEdicao = this.fb.group({
+      name: ['', Validators.required],
+      quantity: ['', Validators.required],
+      price: ['', Validators.required],
+      dataCadastro: [this.data],
+      dataValidade: ['', Validators.required],
+    });
+  }
 }

@@ -27,6 +27,10 @@ export class CadastrarOngsComponent {
     this.viewTelasService.setcadastrarongs(value);
   }
 
+  mostrarTelaInicialAdmin(value: boolean){
+    this.viewTelasService.settelaInicialAdmin(value);
+  }
+
   trocarTela(value: boolean) {
     this.viewTelasService.settelaongs(value);
   }

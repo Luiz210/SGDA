@@ -19,6 +19,11 @@ export class ListaDirecionarComponent {
     private notificationService: NotificationService){
 
   }
+
+  mostrarTelaInicialAdmin(value: boolean){
+    this.viewTelasService.settelaInicialAdmin(value);
+  }
+
   voltar(ativo: boolean){
     this.viewTelasService.setListaDirecionar(ativo);
   }

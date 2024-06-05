@@ -7,24 +7,24 @@
                 <a class="navbar-brand" href="#">SGDA</a>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav" *ngIf="getloginEmpresa()">
-                    <a class="nav-link" (click)="mostrarTelaCadastroAlimentos(true); mostrarTelaVendas(false);">Cadastro de Alimento</a>
-                    <a class="nav-link" (click)="mostrarTelaCadastroAlimentos(false); mostrarTelaVendas(true);">Alimentos Vendidos</a>
+                    <a class="nav-link" (click)="mostrarTelaCadastroAlimentos(true); mostrarTelaVendas(false); mostrarTelaInicialVendedor(false)">Cadastro de Alimento</a>
+                    <a class="nav-link" (click)="mostrarTelaCadastroAlimentos(false); mostrarTelaVendas(true); mostrarTelaInicialVendedor(false)">Alimentos Vendidos</a>
                     <a class="nav-link">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</a>
                 </div>
                 <div class="navbar-nav" *ngIf="getloginDoador()">
-                    <a class="nav-link" (click)="mostrarTelaDoacao(true); mostrarTelaComprovante(false)">Doação</a>
-                    <a class="nav-link" (click)="mostrarTelaDoacao(false); mostrarTelaComprovante(true)">Comprovante</a>
+                    <a class="nav-link" (click)="mostrarTelaDoacao(true); mostrarTelaComprovante(false); mostrarTelaInicialDoador(false)">Doação</a>
+                    <a class="nav-link" (click)="mostrarTelaDoacao(false); mostrarTelaComprovante(true); mostrarTelaInicialDoador(false)">Comprovante</a>
                     <a class="nav-link">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</a>
                 </div>
                 <div class="navbar-nav" *ngIf="getloginGestor()">
                     <a class="nav-link"
-                        (click)="mostrarTelaDirecionar(true); mostrarTelaOngs(false); mostrarCadastrarOngs(false);mostrarListaDirecionar(false)">Direcionar
+                        (click)="mostrarTelaDirecionar(true); mostrarTelaOngs(false); mostrarCadastrarOngs(false);mostrarListaDirecionar(false); mostrartelaInicialAdmin(false)">Direcionar
                         </a>
                     <a class="nav-link"
-                        (click)="mostrarCadastrarOngs(true); mostrarTelaDirecionar(false); mostrarTelaOngs(false);mostrarListaDirecionar(false)">
+                        (click)="mostrarCadastrarOngs(true); mostrarTelaDirecionar(false); mostrarTelaOngs(false);mostrarListaDirecionar(false); mostrartelaInicialAdmin(false)">
                         Ongs</a>
                     <a class="nav-link"
-                        (click)="mostrarListaDirecionar(true);mostrarCadastrarOngs(false); mostrarTelaDirecionar(false); mostrarTelaOngs(false)">Lista
+                        (click)="mostrarListaDirecionar(true);mostrarCadastrarOngs(false); mostrarTelaDirecionar(false); mostrarTelaOngs(false); mostrartelaInicialAdmin(false)">Lista
                         Direcionamentos</a>
 
                         <a class="nav-link">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</a>
@@ -58,9 +58,9 @@
 
     <app-notification></app-notification>
 
-    <app-tela-inicial-vendedor *ngIf="getloginEmpresa()"></app-tela-inicial-vendedor>
-    <app-tela-logado-inicial *ngIf="getloginGestor()"></app-tela-logado-inicial>
-    <app-tela-inicial-doador *ngIf="getloginDoador()"></app-tela-inicial-doador>
+    <app-tela-inicial-vendedor *ngIf="getTelaInicialVendedor()"></app-tela-inicial-vendedor>
+    <app-tela-logado-inicial *ngIf="gettelaInicialAdmin()"></app-tela-logado-inicial>
+    <app-tela-inicial-doador *ngIf="getTelaInicialDoador()"></app-tela-inicial-doador>
 </body>
 
 <footer class="footer">

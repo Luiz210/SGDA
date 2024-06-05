@@ -52,6 +52,9 @@ export class TelaInicialComponent {
         this.viewTelasService.setLoginEmpresa(true);
         this.viewTelasService.setLoginDoador(false);
         this.viewTelasService.setLoginGestor(false);
+        this.viewTelasService.setTelaInicialVendendor(true);
+        this.viewTelasService.settelaInicialDoador(false);
+        this.viewTelasService.settelaInicialAdmin(false);
         this.router.navigate(['/Logado']);
       }
       else if (response.role.name === "admin") {
@@ -60,6 +63,9 @@ export class TelaInicialComponent {
         this.viewTelasService.setLoginGestor(true);
         this.viewTelasService.setLoginDoador(false);
         this.viewTelasService.setLoginEmpresa(false);
+        this.viewTelasService.settelaInicialAdmin(true);
+        this.viewTelasService.setTelaInicialVendendor(false);
+        this.viewTelasService.settelaInicialDoador(false);
         this.router.navigate(['/Logado']);
 
       }
@@ -68,6 +74,9 @@ export class TelaInicialComponent {
         this.viewTelasService.setLoginDoador(true);
         this.viewTelasService.setLoginEmpresa(false);
         this.viewTelasService.setLoginGestor(false);
+        this.viewTelasService.settelaInicialDoador(true);
+        this.viewTelasService.setTelaInicialVendendor(false);
+        this.viewTelasService.settelaInicialAdmin(false);
         this.router.navigate(['/Logado']);
       }
       else {

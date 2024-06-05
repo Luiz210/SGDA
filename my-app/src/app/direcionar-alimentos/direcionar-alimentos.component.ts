@@ -39,6 +39,10 @@ export class DirecionarAlimentosComponent {
     this.getListaOng();
     this.DirecionarAlimento();
   }
+  
+  mostrarTelaInicialAdmin(value: boolean){
+    this.viewTelasService.settelaInicialAdmin(value);
+  }
 
   voltar(value: boolean) {
     this.viewTelasService.setteladirecionar(value);

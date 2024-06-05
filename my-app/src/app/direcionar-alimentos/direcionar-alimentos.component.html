@@ -1,6 +1,6 @@
 <body>
   <div class="iconetexto">
-    <button mat-icon-button (click)="voltar(false)">
+    <button mat-icon-button (click)="voltar(false); mostrarTelaInicialAdmin(true)">
       <mat-icon>arrow_back</mat-icon>
     </button>
     <span class="tamanhotexto">voltar</span>
@@ -10,29 +10,32 @@
   <h1 class="titulo">Alimentos Cadastrados</h1>
   <table mat-table>
     <thead>
-      <th>Nº</th>
-      <th>Nome</th>
-      <th>Quantidade</th>
-      <th>Preço</th>
-      <th>Data de Cadastro</th>
-      <th>Data de Validade</th>
-      <th>Direcionar</th>
+      <tr>
+        <th>Nº</th>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Data de Cadastro</th>
+        <th>Data de Validade</th>
+        <th>Direcionar</th>
+      </tr>
     </thead>
-    <tbody *ngFor="let item of listaAlimentos;let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.quantity}}Kg</td>
-      <td>${{item.price}} por Kg</td>
-      <td>{{item.dataCadastro}}</td>
-      <td>{{item.dataValidade}}</td>
-      <td>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selectItemAlimento(i)">
-          <mat-icon>send</mat-icon>
-        </button>
-      </td>
+    <tbody *ngFor="let item of listaAlimentos; let i = index">
+      <tr>
+        <td>{{i + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}Kg</td>
+        <td>${{item.price}} por Kg</td>
+        <td>{{item.dataCadastro | date:'dd/MM/yyyy'}}</td>
+        <td>{{item.dataValidade | date:'dd/MM/yyyy'}}</td>
+        <td>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selectItemAlimento(i)">
+            <mat-icon>send</mat-icon>
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
-
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog custom-modal">
@@ -52,11 +55,11 @@
                   <th>Descrição</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let item of listaOng;let i = index">
+              <tbody *ngFor="let item of listaOng; let i = index">
                 <tr>
                   <td>{{i + 1}}</td>
                   <td>
-                    <input type="radio" name="ong" (click)="selectItemOng(i);showDataEntrega=true">
+                    <input type="radio" name="ong" (click)="selectItemOng(i); showDataEntrega = true">
                   </td>
                   <td>{{item.nome}}</td>
                   <td>{{item.descricao}}</td>
@@ -66,19 +69,19 @@
             <div *ngIf="showDataEntrega">
               <mat-form-field class="sts">
                 <mat-label>Data de Entrega</mat-label>
-                <input formControlName="data_entrega" matInput placeholder="" type="date">
-                <mat-error>Data de Validade é Obrigatorio</mat-error>
-              </mat-form-field>
+                <input matInput [matDatepicker]="picker" formControlName="data_entrega" readonly (click)="picker.open()">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>Data de Validade é Obrigatório</mat-error>
+              </mat-form-field>              
             </div>
-            
           </form>
-        </div> 
+        </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fechar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
           <button type="button" class="btn btn-primary" (click)="postDirecionar()" data-bs-dismiss="modal" [disabled]="!direcionarForm.valid">Enviar</button>
         </div>
       </div>
     </div>
   </div>
-
 </body>

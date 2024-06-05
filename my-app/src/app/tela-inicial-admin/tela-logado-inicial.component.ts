@@ -28,4 +28,7 @@ export class TelaLogadoInicialComponent {
     this.viewTelasService.setListaDirecionar(value);
   }
 
+  mostrarTelaInicialAdmin(value: boolean){
+    this.viewTelasService.settelaInicialAdmin(value);
+  }
 }
